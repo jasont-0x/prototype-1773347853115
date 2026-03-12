@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check your answers before sending" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    <h1 class="govuk-heading-xl">Check your answers before sending</h1>
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: { text: "What type of contact did you have?" },
+        value: { text: data["contact-type"] if data["contact-type"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/contact-type",
+            text: "Change",
+            visuallyHiddenText: "what type of contact did you have?"
+          }]
+        }
+      },
+      {
+        key: { text: "When did the contact happen?" },
+        value: { text: data["contact-date"] if data["contact-date"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/contact-date",
+            text: "Change",
+            visuallyHiddenText: "when did the contact happen?"
+          }]
+        }
+      },
+      {
+        key: { text: "Where did the contact happen?" },
+        value: { text: data["contact-location"] if data["contact-location"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/contact-location",
+            text: "Change",
+            visuallyHiddenText: "where did the contact happen?"
+          }]
+        }
+      },
+      {
+        key: { text: "Describe the aliens you met" },
+        value: { text: data["alien-description"] if data["alien-description"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/alien-description",
+            text: "Change",
+            visuallyHiddenText: "describe the aliens you met"
+          }]
+        }
+      },
+      {
+        key: { text: "Do you have evidence of the contact?" },
+        value: { text: data["has-evidence"] if data["has-evidence"] else "Not answered" },
+        actions: {
+          items: [{
+            href: "/has-evidence",
+            text: "Change",
+            visuallyHiddenText: "do you have evidence of the contact?"
+          }]
+        }
+      }
+      ]
+    }) }}
+
+    <form method="post" novalidate>
+      {{ govukButton({ text: "Confirm and send" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
