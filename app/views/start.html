@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Report alien contact" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Report alien contact</h1>
+    <p class="govuk-body">Use this service to report contact you have made with extraterrestrial beings.</p>
+    <p class="govuk-body">You will need:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>details of when and where the contact happened</li>
+      <li>description of the aliens you met</li>
+      <li>any evidence like photos or recordings</li>
+    </ul>
+    <p class="govuk-body">It takes around <strong>15 minutes</strong> to complete.</p>
+    {{ govukButton({
+      text: "Start now",
+      href: "/contact-type",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+{% endblock %}
